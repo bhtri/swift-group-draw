@@ -6,14 +6,31 @@
 //
 
 import UIKit
+import PencilKit
 
 class ViewController: UIViewController {
+
+    private lazy var canvasView: PKCanvasView = {
+        let canvasView = PKCanvasView()
+        canvasView.drawingPolicy = .anyInput
+        canvasView.translatesAutoresizingMaskIntoConstraints = false
+        return canvasView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        setupViews()
     }
 
+    private func setupViews() {
+        view.addSubview(canvasView)
+
+        canvasView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        canvasView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        canvasView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        canvasView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
 
 }
-
