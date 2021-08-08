@@ -17,11 +17,23 @@ class ViewController: UIViewController {
         return canvasView
     }()
 
+    private lazy var toolPicker: PKToolPicker = {
+        let toolPicker = PKToolPicker()
+        return toolPicker
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         setupViews()
+        setupToolPicker()
+    }
+
+    private func setupToolPicker() {
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        toolPicker.addObserver(canvasView)
+        canvasView.becomeFirstResponder()
     }
 
     private func setupViews() {
