@@ -28,6 +28,13 @@ class ViewController: UIViewController {
 
         setupViews()
         setupToolPicker()
+
+        navigationItem.title = "My Canvas"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(handleClearCanvas))
+    }
+
+    @objc func handleClearCanvas() {
+        canvasView.drawing = PKDrawing()
     }
 
     private func setupToolPicker() {
